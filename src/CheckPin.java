@@ -1,16 +1,42 @@
+//(i)Create a function that will test if a string is a valid PIN or not via a regular expression.
+//A valid PIN has:
+//Exactly 4 or 6 characters
+//Only numeric characters (0-9).
+//No whitespace.
+//Examples
+//validate("121317") ➞ true
+//validate("1234") ➞ true
+//validate("45135") ➞ false
+//validate("89abc1") ➞ false
+//validate("900876") ➞ true
+//validate(" 4983") ➞ false
+//Notes
+//Empty strings should return false when tested.
+
+
 public class CheckPin {
     public static void main(String[] args) {
-        System.out.println(checkPin("12345"));
-        System.out.println(checkPin("1234"));
-        System.out.println(checkPin("123456"));
-        System.out.println(checkPin("1234567"));
+        System.out.println(checkPin("12345")); // false
+        System.out.println(checkPin("1234")); // true
+        System.out.println(checkPin("123456")); // true
+        System.out.println(checkPin("1234567")); // false
+        System.out.println(checkPin("")); // false
+        System.out.println(checkPin("asdsadasd")); // false
 
     }
 
     public static boolean checkPin(String pin){
+        String str = "0123456789";
        int stringLen = pin.length();
-       if (stringLen == 4 || stringLen == 6){
-           return true;
+       if(stringLen == 0){
+           return false;
+       }
+       for (int i = 0; i < stringLen; i++){
+           if (stringLen == 4 || stringLen == 6){
+               if(str.contains(String.valueOf(pin.charAt(i)))){
+                   return true;
+               }
+           }
        }
        return false;
     }
