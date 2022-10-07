@@ -16,13 +16,13 @@
 
 public class CheckPin {
     public static void main(String[] args) {
-        System.out.println(checkPin("12345")); // false
+        System.out.println(checkPin("121317")); // true
         System.out.println(checkPin("1234")); // true
-        System.out.println(checkPin("123456")); // true
-        System.out.println(checkPin("1234567")); // false
+        System.out.println(checkPin("45135")); // false
+        System.out.println(checkPin("89abc1")); // false
+        System.out.println(checkPin("900876")); // true
+        System.out.println(checkPin("4983")); // true
         System.out.println(checkPin("")); // false
-        System.out.println(checkPin("asdsadasd")); // false
-
     }
 
     public static boolean checkPin(String pin){
@@ -32,12 +32,14 @@ public class CheckPin {
            return false;
        }
        for (int i = 0; i < stringLen; i++){
-           if (stringLen == 4 || stringLen == 6){
-               if(str.contains(String.valueOf(pin.charAt(i)))){
-                   return true;
+            if (stringLen == 4 || stringLen == 6){
+               if(!str.contains(String.valueOf(pin.charAt(i)))){
+                  return false;
                }
-           }
+           } else {
+                return false;
+            }
        }
-       return false;
+       return true;
     }
 }
